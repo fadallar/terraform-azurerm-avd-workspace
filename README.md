@@ -1,1 +1,3 @@
-# terraform-azurerm-avd-workspace
+<!-- BEGIN_AUTOMATED_TF_DOCS_BLOCK -->
+
+<!-- END_AUTOMATED_TF_DOCS_BLOCK -->
