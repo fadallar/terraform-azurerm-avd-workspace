@@ -1,10 +1,10 @@
 variable "public_network_access" {
   description = "Define the public network access behaviour. Possible values are Enabled, EnabledForClientsOnly ,Disabled"
-  type = string
-  default = "Enabled"
+  type        = string
+  default     = "Enabled"
   validation {
-      condition =  contains(["Disabled","Enabled"], var.public_network_access)
-       error_message = "Invalid variable: public_network_access = ${var.public_network_access}. Select valid option from list: ${join(",", ["Disabled","Enabled"])}."
+    condition     = contains(["Disabled", "Enabled"], var.public_network_access)
+    error_message = "Invalid variable: public_network_access = ${var.public_network_access}. Select valid option from list: ${join(",", ["Disabled", "Enabled"])}."
   }
 }
 

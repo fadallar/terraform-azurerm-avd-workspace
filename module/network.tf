@@ -7,7 +7,7 @@ resource "azapi_update_resource" "this" {
 
   body = jsonencode({
     properties = {
-      publicNetworkAccess: var.public_network_access,
+      publicNetworkAccess : var.public_network_access,
     }
   })
 

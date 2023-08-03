@@ -36,7 +36,7 @@ variable "description" {
 }
 
 variable "associated_application_group_id" {
-  type = string
+  type        = string
   description = "Resource Id of the AVD application group this workspace is associated with"
-  default = null
+  default     = null
 }
