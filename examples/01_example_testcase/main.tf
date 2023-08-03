@@ -73,7 +73,7 @@ module "diag_log_analytics_workspace" {
 }
 
 # Please specify source as git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git<<ADD_MODULE_NAME>>//module?ref=master or with specific tag
-module "avdworkspace {
+module "avdworkspace" {
   source              = "../../module"
   #custom_name         = local.custom_name
   landing_zone_slug   = local.landing_zone_slug
