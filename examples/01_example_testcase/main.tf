@@ -13,7 +13,7 @@ locals {
   # specify extra tags value if needed
   extra_tags = {
     tag1 = "FirstTag",
-    tag2    = "SecondTag"
+    tag2 = "SecondTag"
   }
 
   # specify base tagging values
@@ -28,8 +28,9 @@ locals {
   technical_owner = "Fabrice"
 
   # AVD Workspace
-  friendly_name = local.avd_workspace_friendly_name
-  description = local.avd_workspace_description
+  avd_workspace_friendly_name    = "Myworkspcace"
+  avd_workspace_description      = "My description"
+  avd_workspace_private_endpoint = false
 }
 
 module "regions" {
@@ -74,7 +75,7 @@ module "diag_log_analytics_workspace" {
 
 # Please specify source as git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git<<ADD_MODULE_NAME>>//module?ref=master or with specific tag
 module "avdworkspace" {
-  source              = "../../module"
+  source = "../../module"
   #custom_name         = local.custom_name
   landing_zone_slug   = local.landing_zone_slug
   stack               = local.stack
@@ -84,11 +85,11 @@ module "avdworkspace" {
   # Default Tags
   default_tags = module.base_tagging.base_tags
   # Extra Tags
-  extra_tags = local.extra_tags
+  extra_tags                      = local.extra_tags
   diag_log_analytics_workspace_id = module.diag_log_analytics_workspace.log_analytics_workspace_id
 
   # Module Parameters
-  friendly_name = local.avd_workspace_friendly_name
-  description = local.avd_workspace_description
-  enable_private_endpoint = false
+  friendly_name           = local.avd_workspace_friendly_name
+  description             = local.avd_workspace_description
+  enable_private_endpoint = local.avd_workspace_private_endpoint
 }
