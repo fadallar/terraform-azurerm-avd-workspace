@@ -54,7 +54,6 @@ module "base_tagging" {
 module "resource_group" {
   source            = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-resourcegroup//module?ref=master"
   stack             = local.stack
-  custom_name       = local.resource_group_name
   landing_zone_slug = local.landing_zone_slug
   default_tags      = module.base_tagging.base_tags
   location          = module.regions.location
