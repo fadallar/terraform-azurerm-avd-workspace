@@ -18,7 +18,7 @@ locals {
 
   # specify base tagging values
   environment     = "sbx"
-  application     = "avd"
+  application     = "terra-module"
   cost_center     = "CCT"
   change          = "CHG666"
   owner           = "Fabrice"
@@ -28,7 +28,7 @@ locals {
   technical_owner = "Fabrice"
 
   # AVD Workspace
-  avd_workspace_friendly_name    = "Myworkspcace"
+  avd_workspace_friendly_name    = "My friendly name"
   avd_workspace_description      = "My description"
   avd_workspace_private_endpoint = false
 }
