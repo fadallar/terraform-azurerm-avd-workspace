@@ -4,9 +4,9 @@
 
 # Please specify local values
 locals {
-  stack               = "avdpoc"
-  landing_zone_slug   = "sbx"
-  location            = "westeurope"
+  stack             = "avdpoc"
+  landing_zone_slug = "sbx"
+  location          = "westeurope"
 
   # 
   extra_tags = {
@@ -72,13 +72,13 @@ module "diag_log_analytics_workspace" {
 
 # Please specify source as git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git<<ADD_MODULE_NAME>>//module?ref=master or with specific tag
 module "avdworkspace" {
-  source = "../../module"
-  landing_zone_slug   = local.landing_zone_slug
-  stack               = local.stack
-  location            = module.regions.location
-  location_short      = module.regions.location_short
-  resource_group_name = module.resource_group.resource_group_name
-  default_tags = module.base_tagging.base_tags
+  source                          = "../../module"
+  landing_zone_slug               = local.landing_zone_slug
+  stack                           = local.stack
+  location                        = module.regions.location
+  location_short                  = module.regions.location_short
+  resource_group_name             = module.resource_group.resource_group_name
+  default_tags                    = module.base_tagging.base_tags
   extra_tags                      = local.extra_tags
   diag_log_analytics_workspace_id = module.diag_log_analytics_workspace.log_analytics_workspace_id
 

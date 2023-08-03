@@ -1,9 +1,9 @@
 # Test case local inputs
 locals {
 
-  stack               = "avdworkspace"
-  landing_zone_slug   = "sbx"
-  location            = "westeurope"
+  stack             = "avdworkspace"
+  landing_zone_slug = "sbx"
+  location          = "westeurope"
 
   # extra tags
   extra_tags = {
@@ -63,7 +63,7 @@ module "resource_group" {
 }
 
 module "diag_log_analytics_workspace" {
-  source = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-loganalyticsworkspace//module?ref=feature/use-tf-lock-file"
+  source              = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-loganalyticsworkspace//module?ref=feature/use-tf-lock-file"
   landing_zone_slug   = local.landing_zone_slug
   stack               = local.stack
   location            = module.regions.location
@@ -73,7 +73,7 @@ module "diag_log_analytics_workspace" {
 }
 
 module "vnet" {
-  source = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-vnet//module?ref=develop"
+  source                          = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-vnet//module?ref=develop"
   landing_zone_slug               = local.landing_zone_slug
   stack                           = local.stack
   location                        = module.regions.location
@@ -87,7 +87,7 @@ module "vnet" {
 }
 
 module "subnet-private-endpoint" {
-  source = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-subnet//module?ref=develop"
+  source              = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-subnet//module?ref=develop"
   landing_zone_slug   = local.landing_zone_slug
   stack               = local.stack
   location_short      = module.regions.location_short
@@ -95,11 +95,11 @@ module "subnet-private-endpoint" {
 
   virtual_network_name = module.vnet.virtual_network_name
   address_prefixes     = local.subnet_private_endpoint
-  enable_delegation = false
+  enable_delegation    = false
 }
 
 module "private_dns_zone_avd_workspace" {
-  source = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-privatednszone//module?ref=release/1.0.0"
+  source              = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-privatednszone//module?ref=release/1.0.0"
   domain_name         = local.avd_workspace_private_dns_zone
   resource_group_name = module.resource_group.resource_group_name
   default_tags        = module.base_tagging.base_tags
@@ -107,22 +107,22 @@ module "private_dns_zone_avd_workspace" {
 
 # Please specify source as git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git<<ADD_MODULE_NAME>>//module?ref=master or with specific tag
 module "avdworkspace" {
-  source = "../../module"
-  landing_zone_slug   = local.landing_zone_slug
-  stack               = local.stack
-  location            = module.regions.location
-  location_short      = module.regions.location_short
-  resource_group_name = module.resource_group.resource_group_name
-  default_tags = module.base_tagging.base_tags
+  source                          = "../../module"
+  landing_zone_slug               = local.landing_zone_slug
+  stack                           = local.stack
+  location                        = module.regions.location
+  location_short                  = module.regions.location_short
+  resource_group_name             = module.resource_group.resource_group_name
+  default_tags                    = module.base_tagging.base_tags
   extra_tags                      = local.extra_tags
   diag_log_analytics_workspace_id = module.diag_log_analytics_workspace.log_analytics_workspace_id
 
   # Module Parameters
-  enable_private_endpoint = local.avd_workspace_private_endpoint
+  enable_private_endpoint    = local.avd_workspace_private_endpoint
   private_dns_zone_id        = module.private_dns_zone_avd_workspace.id
   private_endpoint_subnet_id = module.subnet-private-endpoint.subnet_id
-  public_network_access = local.avd_workspace_public_access
+  public_network_access      = local.avd_workspace_public_access
 
-  friendly_name           = local.avd_workspace_friendly_name
-  description             = local.avd_workspace_description
+  friendly_name = local.avd_workspace_friendly_name
+  description   = local.avd_workspace_description
 }
