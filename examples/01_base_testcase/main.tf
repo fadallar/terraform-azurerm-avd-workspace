@@ -4,19 +4,17 @@
 
 # Please specify local values
 locals {
-  #custom_name         = ""
   stack               = "avdpoc"
   landing_zone_slug   = "sbx"
   location            = "westeurope"
-  resource_group_name = "testavdpoc"
 
-  # specify extra tags value if needed
+  # 
   extra_tags = {
     tag1 = "FirstTag",
     tag2 = "SecondTag"
   }
 
-  # specify base tagging values
+  # base tagging values
   environment     = "sbx"
   application     = "terra-module"
   cost_center     = "CCT"
@@ -75,15 +73,12 @@ module "diag_log_analytics_workspace" {
 # Please specify source as git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git<<ADD_MODULE_NAME>>//module?ref=master or with specific tag
 module "avdworkspace" {
   source = "../../module"
-  #custom_name         = local.custom_name
   landing_zone_slug   = local.landing_zone_slug
   stack               = local.stack
   location            = module.regions.location
   location_short      = module.regions.location_short
   resource_group_name = module.resource_group.resource_group_name
-  # Default Tags
   default_tags = module.base_tagging.base_tags
-  # Extra Tags
   extra_tags                      = local.extra_tags
   diag_log_analytics_workspace_id = module.diag_log_analytics_workspace.log_analytics_workspace_id
 

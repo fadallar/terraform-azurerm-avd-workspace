@@ -22,6 +22,11 @@ locals {
   cia_rating      = "C1I1A1"
   technical_owner = "Fabrice"
 
+  ## Networking
+
+  virtual_network_address_space = ["10.0.0.0/16"]
+  subnet_private_endpoint       = ["10.0.2.0/24"]
+
   # AVD Workspace
   avd_workspace_private_dns_zone = "privatelink.wvd.microsoft.com"
   avd_workspace_friendly_name    = "My friendly name"
