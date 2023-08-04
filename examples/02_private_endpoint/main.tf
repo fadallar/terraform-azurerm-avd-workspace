@@ -102,6 +102,7 @@ module "private_dns_zone_avd_workspace" {
   domain_name         = local.avd_workspace_private_dns_zone
   resource_group_name = module.resource_group.resource_group_name
   default_tags        = module.base_tagging.base_tags
+  # TO-DO add VNET LINK
 }
 
 # Please specify source as git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git<<ADD_MODULE_NAME>>//module?ref=master or with specific tag
