@@ -2,6 +2,6 @@
 
 output "avdworkspace" {
   description = "Description"
-  value       = module.avdworkspace
+  value       = module.avd_workspace
   sensitive   = false
 }
