@@ -115,7 +115,7 @@ module "avd_host_pool" {
 
 module "avd_app_group" {
   ## TO-DO change source path
-  source = "../../../terraform-azurerm-avd-app-group/module"
+  source                          = "../../../terraform-azurerm-avd-app-group/module"
   landing_zone_slug               = local.landing_zone_slug
   stack                           = local.stack
   location                        = module.regions.location
