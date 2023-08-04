@@ -117,7 +117,6 @@ module "avd_host_pool" {
 module "avd_app_group" {
   ## TO-DO change source path
   source = "../../../terraform-azurerm-avd-app-group/module"
-  source                          = "../../module"
   landing_zone_slug               = local.landing_zone_slug
   stack                           = local.stack
   location                        = module.regions.location
@@ -132,12 +131,10 @@ module "avd_app_group" {
   type                         = local.avd_app_group_type
   host_pool_id                 = module.avd_host_pool.avd_host_pool_id
   default_desktop_display_name = local.avd_app_group_default_desktop_display_name
-
-
 }
 
 # Please specify source as git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git<<ADD_MODULE_NAME>>//module?ref=master or with specific tag
-module "avd_work_space" {
+module "avd_workspace" {
   source                          = "../../module"
   landing_zone_slug               = local.landing_zone_slug
   stack                           = local.stack
