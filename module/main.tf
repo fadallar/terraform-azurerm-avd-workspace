@@ -11,7 +11,7 @@ resource "azurerm_virtual_desktop_workspace" "this" {
 }
 
 resource "azurerm_virtual_desktop_workspace_application_group_association" "this" {
-  for_each             = toset(var.associated_application_group_id != null ? ["enabled"] : [])
+  for_each             = toset(var.enable_application_group_association ? ["enabled"] : [])
   workspace_id         = azurerm_virtual_desktop_workspace.this.id
   application_group_id = var.associated_application_group_id
 }
