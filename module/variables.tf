@@ -20,15 +20,3 @@ variable "description" {
   description = "A description for the Virtual Desktop Host Pool."
   ### TO-DO add Validation Block
 }
-
-variable "enable_application_group_association" {
-  type = bool
-  description = "Enable the association with an AVD Application group. If set to true an AVD App Group Id must be provide"
-  default = true
-}
-
-variable "associated_application_group_id" {
-  type        = string
-  description = "Resource Id of the AVD application group this workspace is associated with"
-  default     = null
-}
