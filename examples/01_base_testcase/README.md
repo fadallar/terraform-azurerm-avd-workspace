@@ -1,6 +1,6 @@
 # AVD Workspace - Base test case
 
-This is an example for setting-up a an Azure Virtual Desktop Workspace with private endpoint configuration  
+This is an example for setting-up a an Azure Virtual Desktop Workspace with an AVD Application Group association
 
 This test case:
 - Sets the different Azure Region representation (location, location_short, location_cli ...) --> module "regions"
@@ -8,9 +8,11 @@ This test case:
 - Creates the following module dependencies
     - Resource Group
     - Log Analytics workspace
-- Creates an Azure Virtual Desktop Workspace --> module "avdworkspace" which also
-    - Set the default diagnostics settings (All Logs and metric) whith a Log Analytics workspace as destination
-
+    - AVD Host Pool
+    - AVD App Group
+- Creates an Azure Virtual Desktop Workspace --> module "avd_workspace" which also
+    - Set the default diagnostics settings (All Logs and metric) whith the previously confuigured Log Analytics workspace as destination
+    - Associate the Workspace with the previously created AVD App Group
 <!-- BEGIN_AUTOMATED_TF_DOCS_BLOCK -->
 
 <!-- END_AUTOMATED_TF_DOCS_BLOCK -->

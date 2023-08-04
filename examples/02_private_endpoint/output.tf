@@ -1,5 +1,5 @@
 output "avdworkspace" {
   description = "outputs for avdworkspace module"
-  value       = module.avdworkspace
+  value       = module.avd_workspace
   sensitive   = false
 }

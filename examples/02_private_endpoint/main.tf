@@ -1,7 +1,6 @@
 # Test case local inputs
 locals {
-
-  stack             = "avdworkspace"
+  stack             = "avdwork-02"
   landing_zone_slug = "sbx"
   location          = "westeurope"
 
@@ -86,7 +85,7 @@ module "vnet" {
   virtual_network_flow_timeout_in_minutes = 4
 }
 
-module "subnet-private-endpoint" {
+module "subnet_private_endpoint" {
   source              = "git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git/terraform-azurerm-subnet//module?ref=develop"
   landing_zone_slug   = local.landing_zone_slug
   stack               = local.stack
@@ -106,7 +105,7 @@ module "private_dns_zone_avd_workspace" {
 }
 
 # Please specify source as git::https://ECTL-AZURE@dev.azure.com/ECTL-AZURE/ECTL-Terraform-Modules/_git<<ADD_MODULE_NAME>>//module?ref=master or with specific tag
-module "avdworkspace" {
+module "avd_workspace" {
   source                          = "../../module"
   landing_zone_slug               = local.landing_zone_slug
   stack                           = local.stack
@@ -120,7 +119,7 @@ module "avdworkspace" {
   # Module Parameters
   enable_private_endpoint    = local.avd_workspace_private_endpoint
   private_dns_zone_id        = module.private_dns_zone_avd_workspace.id
-  private_endpoint_subnet_id = module.subnet-private-endpoint.subnet_id
+  private_endpoint_subnet_id = module.subnet_private_endpoint.subnet_id
   public_network_access      = local.avd_workspace_public_access
 
   friendly_name = local.avd_workspace_friendly_name

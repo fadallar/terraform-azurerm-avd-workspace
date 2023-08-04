@@ -1,10 +1,13 @@
-# TODO: Update terraform, provider versions or add additional provider if needed 
 terraform {
   required_version = ">= 1.3"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = ">= 3.61.0"
+    }
+    azapi = {
+      source  = "Azure/azapi"
+      version = ">=1.8.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -14,4 +17,8 @@ terraform {
 }
 provider "azurerm" {
   features {}
+}
+
+provider "azapi" {
+
 }

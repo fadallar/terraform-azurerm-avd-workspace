@@ -11,9 +11,9 @@ This test case:
     - Subnet
     - Log Analytics workspace
     - Private DNS Zone
-- Creates an Azure Virtual Desktop Workspace --> module "avdworkspace" which also
+- Creates an Azure Virtual Desktop Workspace --> module "avd_workspace" which also
     - create private endpoint  
-    - Set the default diagnostics settings (All Logs and metric) whith a Log Analytics workspace as destination
+    - Set the default diagnostics settings (All Logs and metric) whith the previously created Log Analytics workspace as destination
 
 !! Important
 
