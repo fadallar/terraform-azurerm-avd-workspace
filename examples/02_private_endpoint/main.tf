@@ -122,6 +122,7 @@ module "avd_workspace" {
   private_endpoint_subnet_id = module.subnet_private_endpoint.subnet_id
   public_network_access      = local.avd_workspace_public_access
 
-  friendly_name = local.avd_workspace_friendly_name
-  description   = local.avd_workspace_description
+  enable_application_group_association = false
+  friendly_name                        = local.avd_workspace_friendly_name
+  description                          = local.avd_workspace_description
 }
