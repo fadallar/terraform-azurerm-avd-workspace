@@ -22,3 +22,7 @@ provider "azurerm" {
 provider "azapi" {
 
 }
+
+terraform {
+  backend "azurerm" {}
+}
