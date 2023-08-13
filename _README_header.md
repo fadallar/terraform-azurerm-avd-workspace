@@ -5,5 +5,5 @@ This module can be used to creates Azure Virtual Desktop Workspace its associate
 
 ## Examples
 
-[01_base_testcase](./examples/01_base_testcase/README.md)
-[01_private_endpoint](./examples/02_private_endpoint/README.md)
+[01_base_testcase](./examples/01_base_testcase/README.md)  
+[01_private_endpoint](./examples/02_private_endpoint/README.md)  
